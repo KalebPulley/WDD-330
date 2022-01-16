@@ -1,0 +1,46 @@
+Video 1
+because mobile devices are more common so you should design for them
+Additionaly by working from the smallest devices requiarment it is eaisier to make it work wih larger ones.
+this method has a cleaner look.
+It will be easier to work with new changes.
+this helps you consider what you are putting on your site is the most important.
+
+Video 2
+be there
+be useful
+be quick
+reachability matters
+speed
+    reduce amount of pictures
+    use svg/webfonts
+    get rid of unused con
+    get rid of whispace
+
+Video 3
+place controles in easy areas to reach
+don't just use common icons because poele may not know what they are.
+
+Video 4
+you can put words in textboxes
+float lables
+only requiare nesisary information
+check boxes to change forms
+number pad
+auto fill
+anker phone numbers
+show paswords with the option to hide
+single line fill for card info is a good option.
+
+video 5
+adds small
+simple
+be creative
+stop using popups and popovers
+empathy i nesisary when deigning adds
+
+Reading
+create variables for functions
+localStorage.getItem(file name)
+to load an item 
+localStorage.setItem(file name, content)
+to save to local storage

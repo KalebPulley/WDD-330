@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>I added some functionalities after the meting to explore the concepts more. Kaleb Pulley</h2>
+    <input type="text" id="contents"></input>
+    <button onclick="read()">factoral</button>
+    <input type="text" id="two"></input>
+    <button onclick="calculator(add)">Add the numbers</button>
+    <button onclick="calculator(divide)">divide the numbers</button>
+    <button onclick="calculator(mult)">multiply the numbers</button>
+    <button onclick="calculator(sub)">subtract the numbers</button>
+    <div id="panda"></div>
+
+    <script>
+        let content = null;
+        let two = null;
+        const refresh = function () {
+            content = parseInt(document.querySelector("#contents").value);
+            two = parseInt(document.querySelector("#two").value);
+        }
+
+        function read() {
+            refresh()
+            console.log(content);
+            let result = sum(content);
+            document.querySelector("#panda").innerHTML = result;
+        }
+        const sum = num => {
+            let count = 0;
+            for (let i = num; i > 0; i--) {
+                count += i;
+
+            }
+            return count
+        }
+        const add = function () {
+            return content + two;
+        }
+        const sub = function () {
+            return content - two;
+        }
+        const mult = function () {
+            return content * two;
+        }
+        const divide = function () {
+            return content / two;
+        }
+        const calculator = function (operation) {
+            refresh();
+            document.querySelector("#panda").innerHTML = operation();
+
+        }
+    </script>
+</body>
+
+</html>
