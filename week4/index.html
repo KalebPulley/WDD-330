@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>week 4 notes</title>
+  </head>
+  <body>
+    <h1>Week 4 notes</h1>
+    <h2>chapters</h2>
+    <h3>chapter 8 forms</h3>
+    <p>
+      Form refences can use dot and parenthetical notation. dot notation can be
+      messed by dasshes or spaces. form.elements to acsses all ellements. Type
+      submit. Reset buttons, a solution to the problem might be a pop up warning
+      or double click to reset? focuss gets called a lot with a pop up making it
+      practially imposable to right in it so don't call a pop up from a focuss.
+      placeholder can be replicated with a set of functions called on the focuss
+      and blure events.
+    </p>
+    <p>
+      checkboxes good for arrow functions to get only the checed values from.
+      catagory for the value of radio buttons. hidden is not actually hidden so
+      don't pass sesitvie info in it.
+      disable with validation gives added mesures to help the user.
+    </p>
+    <h3>chapter3 oop</h3>
+    <p>
+        HS borrows a lot of the style of java for oop.
+        don't monkey patch!
+        shallow is a reference hard is a new object.
+        borrow form object to prevent bloating.
+        Most of this is review of similare princeples.
+    </p>
+    <h2>Exersizes</h2>
+    <form name="search" action="/search">
+      <input name="searchInput" />
+      <button type="submit">Search</button>
+    </form>
+    <form id="hero">
+      <label for="heroName"
+        >Name:
+        <input type='text' id='heroName' name='heroName' autofocus placeholder='Your Super Hero Name' maxlength=32 required>
+      </label>
+      <label for="donation-amount"
+        >Enter amount to donate:
+        <input
+          type="text"
+          id="donation-amount"
+          name="donationAmount"
+          value="10"
+        />
+      </label>
+      <label for="realName"
+        >Real Name: <input type="password" name="realName" id="realName"
+      /></label>
+      <p>Super Powers:</p>
+      <label for="flight"
+        >Flight:
+        <input type="checkbox" id="flight" value="Flight" name="powers" />
+      </label>
+      <label for="strength"
+        >Super Strength:
+        <input type="checkbox" id="strength" value="Strength" name="powers" />
+      </label>
+      <label for="speed"
+        >Super Speed:
+        <input type="checkbox" id="speed" value="Super Speed" name="powers" />
+      </label>
+      <label for="energy"
+        >Energy Blasts:
+        <input
+          type="checkbox"
+          id="energy"
+          value="Energy Blasts"
+          name="powers"
+        />
+      </label>
+      <label for="telekinesis"
+        >Telekinesis:
+        <input
+          type="checkbox"
+          id="telekinesis"
+          value="Telekinesis"
+          name="powers"
+        />
+        <label for="age"
+          >Age: <input type="number" id="age" name="age" min="0" step="1"
+        /></label>
+
+        <label for="City"
+          >Base of Operations:
+          <select name="city" id="city">
+            <option value="" selected>Choose a City</option>
+            <option value="Metropolis">Metropolis</option>
+            <option value="Gotham City">Gotham City</option>
+            <option value="Keystone City">Keystone City</option>
+            <option value="Coast City">Coast City</option>
+            <option value="Star City">Star City</option>
+          </select>
+        </label>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+    <script src="main.js"></script>
+  </body>
+</html>
