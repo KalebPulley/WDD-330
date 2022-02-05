@@ -40,6 +40,50 @@
     </p>
     <p>normal pactice is to have a seperat file with the tests.</p>
     <h3>remember to remove debuging before publishing code.</h3>
-    
+    <h2>Test area</h2>
+    <h3>enter a number</h3>
+    <div>
+        <label><input id="input" type="text"></label>
+        <button onclick="findRoot()">Square root</button>
+        <div id="output"></div>
+    </div>
+    <script>
+        'use strict';
+        const numError = new Error("number must be a positive integer.");
+        function isNum(n){
+            if(Number.isNaN(Number(n))){
+                throw numError;
+            }
+        }
+        function isInt(n){
+            if(!Math.floor(n) === n){
+                throw numError;
+            }
+        }
+        function isPositive(n){
+            if(n <= 0){
+                throw numError;
+            }
+        }
+        function sqRoot(n){
+            try {
+                isInt(n);
+                isNum(n);
+                isPositive(n);
+                return Math.sqrt(n);
+            }catch(numError){
+               return "Please enter a positive integer."
+            }
+        }
+        function findRoot(){
+            let out = document.querySelector("#input").value;
+            out = parseInt(out);
+            document.querySelector("#output").innerHTML = sqRoot(out);
+        }
+        console.log(isNum(1));
+        console.log(sqRoot(4) === 2);
+
+
+    </script>
 </body>
 </html>
