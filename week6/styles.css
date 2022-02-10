@@ -4,15 +4,22 @@
 .listBox{
     border: 1px solid black;
     max-width: 600px;
+    margin-top: 2em;
+    padding: .5em;
 }
 button{
     border-radius: 0;
     background-color: white;
+    margin-right: 1em;
 }
 li{
     display: grid;
     grid-template-columns: auto 1fr auto;
+    margin-top: 1em;
 }
-.finished{
+.checked{
     text-decoration:line-through;
+}
+button.finished {
+    min-width: 20px;
 }

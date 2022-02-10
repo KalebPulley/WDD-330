@@ -4,7 +4,7 @@ function activeFilter(todos){
     })
 }
 function allFilter(todos){
-    return todos();
+    return todos;
 }
 function completed(todos){
     return todos.filter(todo => {

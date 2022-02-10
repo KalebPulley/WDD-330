@@ -38,13 +38,22 @@ function createTodoItem(todo) {
     //finished buton
     const finished = document.createElement('button');
     finished.setAttribute('data-id', todo.id);
-    finished.classList.add('finnished');
+    finished.classList.add('finished');
     finished.onclick = togleTodo;
 
     //comments
     const comments = document.createElement('div');
     comments.innerHTML = todo.comment;
     comments.classList.add('todoComment');
+
+    //check for finnished
+    if (todo.completed == true){
+        finished.innerHTML = 'X';
+        comments.classList.add('checked');
+    }else{
+        comments.classList.remove('checked');
+        finished.innerHTML = ' ';
+    }
 
     //delete buton
     const deleteBtn = document.createElement('button');
@@ -123,7 +132,7 @@ function applyFillter(e){
     }else if(e.currentTarget.id == "listAll"){
         filteredTodos = utils.allFilter(allTodos);
     }else if(e.currentTarget.id == "completed"){
-        filteredTodos = utils.allFilter(allTodos);
+        filteredTodos = utils.completed(allTodos);
     }
     filteredTodos.forEach( todo => {
         const el = createTodoItem(todo)

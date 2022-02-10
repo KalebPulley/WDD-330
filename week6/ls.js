@@ -1,4 +1,4 @@
-const TODO_LIST = "todoList";
+const TODO_LIST = "todoList0";
 
 function getTodoList() {
 let todoListString = localStorage.getItem(TODO_LIST);
@@ -41,18 +41,25 @@ console.log(`deleted $todo`);
 }
 
 function togleTodo(id) {
-    /* //get curant list
+     //get curant list
     let todoList = getTodoList();
     
     //find item
-    let newList = todoList.forEach(todo => {if ( todo.id == id){
-        todo.completed = true;
-    }else{todo.completed = false}});
+    let newList = [];
+    todoList.forEach(todo => {if ( todo.id == id){
+        if (todo.completed == true){
+            todo.completed = false;
+            newList.push(todo);
+        }else{
+            todo.completed = true;
+            newList.push(todo);
+        }
+    }else {newList.push(todo);}});
     
     //save to storage
     localStorage.setItem(TODO_LIST, JSON.stringify(newList));
     
-    //debug msg
+    /*/debug msg
     console.log(`deleted $todo`);
     } */}
 function deleteAll() {
