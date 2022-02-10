@@ -1,0 +1,18 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.listBox{
+    border: 1px solid black;
+    max-width: 600px;
+}
+button{
+    border-radius: 0;
+    background-color: white;
+}
+li{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+}
+.finished{
+    text-decoration:line-through;
+}
