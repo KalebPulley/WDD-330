@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 7 Notes</title>
+</head>
+<body>
+    <h1>Week 7 Notes</h1>
+    <h2>Notes</h2>
+        <h3>Chapter11</h3>
+        <p>function.call(something) can replace the this element in calles to this within the function.
+            apply() works the same way but with an array.
+            Memoization stores a varibale to the cach and check that it is not there before running a long functio again.
+            Immediately Invoked Function Expression - or IIFE imediatlly call a function on creatin by placing it in parenthessis than following it up with another set of parenthisis and a semicolin.
+            Temporary variables can be created and removed using IIFE as a variable inside is gone after the function runs.
+            Blocks or IIFE can be used to run temporary code like a welcome message.
+            Place 'use strict' in an IIFE to enforce strict just on your code.
+            Blocks or IIFE can be used to ensure that you dont interfear with another part of your code.
+            Redefine a function with in a function can give different results after the first run. This will remove any proporties.
+            Promis can be used as a more readable calback function.
+            "A closure is formed when a function returns another function that then maintains access to any variables created in the original function’s scope."
+
+        </p>
+
+        <h3>Chapter13</h3>
+        <p>
+            Fetch as an alternae api request. 
+            "fetch('https://example.com/data')
+            .then( // code that handles the response )
+            .catch( // code that runs if the server returns an error )""
+            the five modes are GET POST PUT PATCH DELETE
+            here is what it looks like
+            const request = new Request('https://example.com/data', {
+                method: 'GET',
+                mode: 'cors',
+                redirect: 'follow',
+                cache: 'no-cache'
+            });
+            headers methocs get has set append and delete
+            these can be used to chang the value of the hearer.
+            example of a complete request.
+            "const url = 'https:example.com/data';
+            const headers = new Headers({ 'Content-Type': 'text/plain', 'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate' })
+            
+            const request = (url,{
+                headers: headers
+            })
+            
+            fetch(request)
+            .then( function(response) {
+                if(response.ok) {
+                    return response;
+                }
+                throw Error(response.statusText);
+            })
+            .then( response => // do something with response )
+            .catch( error => console.log('There was an error!') )"
+            example of adding data o a request.
+            "data = new FormData(); // no form provided as an argument creates an empty form data instance
+
+            data.append('height', 75);"
+            "const form = document.forms['todo'];
+
+            form.addEventListener('submit', addTask, false);
+            
+            function addTask(event) {
+                event.preventDefault();
+                const task = new FormData(form);
+                const url = `http://echo.jsontest.com/id/1/title/${form.task.value}`;
+                const headers = new Headers({
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                });
+                const request = new Request(url,
+                {
+                    method: 'POST',
+                    mode: 'cors',
+                    header: headers,
+                    body: JSON.stringify(task)
+                }
+                )
+            
+                fetch(request)
+                .then( response => response.json() )
+                .then( data => console.log(`${data.title} saved with an id of ${data.id}`) )
+                .catch( error => console.log('There was an error:', error))
+            
+            }"
+            the fetch api is a living api so thinga will continue to change.
+            
+        </p>
+
+        <hr>
+    <h2>Test Area</h2>
+    <h3>recursive example</h3>
+    <lable><input type="number" id="factoralInPut"/></lable>
+    <button id="factoralBtn"></button>
+    <label id="output"></label>
+    
+    <script>
+        //memoization example in real use a longer function would be when this is used.
+        function square(x){
+    square.cache = square.cache || {};
+    if (!square.cache[x]) {
+        square.cache[x] = x*x;
+    }
+    return square.cache[x]
+}
+function party(){
+    console.log('Wow this is amazing!');
+    party = function(){
+        console.log('Been there, got the T-Shirt');
+    }
+}
+//recursive function
+function factorial(n) {
+    let out = document.getElementById("output");
+    if (n === 0) {
+        out.innerHTML = 1;
+        return 1;
+    } else {
+        out.innerHTML = n * factorial(n - 1);
+        return n * factorial(n - 1);
+    }
+}
+{
+    document.querySelector("#id=factoralBtn").addEventListener().onclick() = factorial(parseInt(document.getElementById("factoralInPut").value));
+}
+function collatz(n, sequence=[n]) {
+    if (n === 1){
+        return `Sequence took ${sequence.length} steps. It was ${sequence}`;
+    }
+
+    if (n%2 === 0) {
+        n = n/2;
+    } else { 
+        n = 3*n + 1;
+    }
+
+    return collatz(n,[...sequence,n]);
+}
+    </script>
+</body>
+</html>
