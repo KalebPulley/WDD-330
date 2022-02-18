@@ -89,14 +89,14 @@
             
             }"
             the fetch api is a living api so thinga will continue to change.
-            
+
         </p>
 
         <hr>
     <h2>Test Area</h2>
     <h3>recursive example</h3>
     <lable><input type="number" id="factoralInPut"/></lable>
-    <button id="factoralBtn"></button>
+    <button id="factoralBtn">factoral</button>
     <label id="output"></label>
     
     <script>
@@ -114,19 +114,22 @@ function party(){
         console.log('Been there, got the T-Shirt');
     }
 }
+{
+    document.querySelector("#factoralBtn").addEventListener("click", runFact);
 //recursive function
 function factorial(n) {
-    let out = document.getElementById("output");
     if (n === 0) {
-        out.innerHTML = 1;
         return 1;
     } else {
-        out.innerHTML = n * factorial(n - 1);
         return n * factorial(n - 1);
     }
 }
-{
-    document.querySelector("#id=factoralBtn").addEventListener().onclick() = factorial(parseInt(document.getElementById("factoralInPut").value));
+function runFact(){
+    const inPuts = parseInt(document.getElementById("factoralInPut").value);
+    const out = document.getElementById("output");
+    out.innerHTML = factorial(inPuts);
+}
+    
 }
 function collatz(n, sequence=[n]) {
     if (n === 1){
