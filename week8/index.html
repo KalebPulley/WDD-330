@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 8 Notes</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: .6em;
+            font-style: normal;
+            width: 50%;
+            align-self: center;
+        }
+        .rotateAnimation{
+            display: inline-block;
+            color: orange;
+            transform: rotate(0deg);
+            transition: transform 0.2s ease-out 50ms, color 0.1s linear 50ms;
+        }
+        .rotateAnimation:hover{
+            transform: rotate(10deg);
+        }
+        .myCanvas {
+    border: dotted 2px black;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Week 8 Notes<h1>
+        <div class="notes">
+            <h2>Notes</h2>
+            <h3>Chapter 8</h3>
+            <p>
+                translations let you move an element around on the page with just css.
+                for IE9, Android up to 4.4.3, iOS8, and Blackberry 10. Use the folowing to make it work.
+                "-webkit-transform: translate(45px,-45px); /* iOS8, Android 4.4.3, BB10 */
+                -ms-transform: translate(45px,-45px); /* IE9 only */
+                transform: translate(45px,-45px);"
+                transform: translate(x, y) or use translateX() and translateY() for just one direction.
+                <strong>You must display block for this to work.</strong>
+                transform: scale(x, y) or one value will be applied to both x and why enter the ecimal that you want it to grow or shrink by.
+                scaleX() and scaleY() for jut enlarging one dimention.
+                Don't use multiple transforms because they orverride eachother just add the arjuments on the same transform.
+                Rotate() ues degrees.
+                skew(x, y) only x is skewed if one paramiter is provided.
+                Use transform-origin to change what the element is transforing around.
+                The order matters because if you move an element with translate fter rotating it it will move at the angle ou rotated it to.
+                </p>
+                <h4>---IE 8---</h4>
+                <p>
+                you can use position relitive with the top and left valuses to move elements in IE8.
+                ".translate {
+                    position: relative;
+                    top: 200px;
+                    left: 200px;
+                }"
+                width and height or justy font-size can work like scale().
+                To rotate it is more dificult and does has bad prformance.
+                ".rotate {
+                    transform: rotate(15deg);  
+                    filter: progid:DXImageTransform.Microsoft.Matrix(
+                        sizingMethod='auto expand', M11=0.9659258262890683, 
+                        M12=-0.25881904510252074, M21=0.25881904510252074, 
+                        M22=0.9659258262890683); 
+                    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(
+                        M11=0.9659258262890683, M12=-0.25881904510252074, 
+                        M21=0.25881904510252074, M22=0.9659258262890683,
+                        sizingMethod='auto expand')"; 
+                    zoom: 1;
+                }"
+                Go here <a href="http://www.useragentman.com/IETransformsTranslator/">http://www.useragentman.com/IETransformsTranslator/</a> if you want to do this.
+            </p>
+            <h4>Animation</h4>
+            <p>
+                While using Java script can do this in IE9 it is resource intensive and all oher browses suort doing it in css so it is bes to do it there.
+                To make an animation.
+                1 set the initial stle for the element.
+                2 declare the final state of the element.
+                3 include transition proporties (transition-property, transition-duration, transition-timing-function, and transition-delay.)
+                -webkit- is neede in older browsers.
+                transition-timing-function tels if you want it to change all at onece or tatr quick or slow and then even out the rest of he transition.
+                transition-delay is for a delay befor the transition starts.
+                A negative value makes it imeadiatly triger part way theough than go back to the begining and transition to the mid point.
+                transition: transform 0.2s ease-out 50ms;
+                As short hand for each function. If a delay is included, you must also include a duration, and the duration must precede the delay, Other proporties don't matter with order.
+                to use multiple propories at the same 
+                transition: transform 0.2s ease-out 50ms, color 0.1s linear 50ms; or
+                transition: transform color 0.2s ease-out 50ms;
+                You can use all insted of multiple proporties, but be aware hat there might be unexpected things tha hapen with all.
+                This is the les controled way than using Animation which is nex.
+            </p>
+            <h4>Animating with animation</h4>
+            <p>
+                Use -webkit on older browsers like transitions.
+                basicly you use keyframes and the animation happens between the points.
+                @keyframes to define a keyframe.
+                example of old
+                @-webkit-keyframes myAnimation { 
+                    /* put animation keyframes here */
+                }
+                example of newr browsers
+                @keyframes myAnimation { 
+                    /* put animation keyframes here */
+                }
+                they are organized by a persentage of the animation from 0 to 100.
+                to aplly an animation.
+                animation-name: appearDisappear;
+                animation-duration: 300ms;
+                to adjust how i runs.
+                transition-timing-function: ease, linear, ease-in, ease-out, ease-in-out.
+                Steps alow for controling how the animation moves.
+                To diffine what an animation looks like when it is not playing ues
+                animation-fill-mode: backwards for the first frame, forwards for the last, none for the last, and both dose the first.
+                animation-play-state for running or paused.
+                verbose and shorthand
+                .verbose {
+                    animation-name: appearDisappear; 
+                    animation-duration: 300ms; 
+                    animation-timing-function: ease-in;
+                    animation-iteration-count: 1;
+                    animation-direction: alternate;
+                    animation-delay: 5s;
+                    animation-fill-mode: backwards;
+                    animation-play-state: running;
+                }
+                
+                /* shorthand */
+                .concise {
+                    animation: 300ms ease-in alternate 5s backwards appearDisappear;
+                }
+                Beware of naming an animation any value for an animation!
+
+
+            </p>
+            <strong>Do not use animations when you don't need to it get distracting and bogs down a page!</strong>
+            <h3>Chapter 12</h3>
+            <p>
+                to use canvas api you will need a canvas element.
+                "&#60;canvas&#62;
+                    Sorry! Your browser doesn’t support Canvas.
+                    &#60;/canvas&#62;"
+            </p>
+            <h4>SVG</h4>
+            <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+                    <circle cx="50" cy="50" r="25" fill="red"/>
+                </svg>
+                you can add a description (desc tag)
+                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 400">
+                    <desc>Drawing a rectangle</desc>
+                        <rect x="10" y="10" width="100" height="100"  
+                            fill="blue" stroke="red" stroke-width="3"  />  
+                    
+                </svg>
+                filter is an option to add effects
+
+
+            </p>
+            <h4>API</h4>
+            <p>
+                APIs work a bit differntly in JavaScript than in java.
+                Because they are a bit like a class that gives extra functionality to JS like the drag and drop.
+                However, at lest with that API you have to override a lot of default functions so check that when you are using them.
+            </p>
+        </div>
+        <div class="Exercises">
+            <h2>Exersizes</h2>
+            <hr>
+            <span class="rotateAnimation">Rotating Animation</span>
+            <hr>
+            <h3>Chapter 12</h3>
+            <canvas id="myCanvas" class="myCanvas" width="200" height="200">
+                Sorry! Your browser doesn&U+2019t support Canvas.
+            </canvas>
+
+            
+
+        </div>
+    <script>
+        //test area for exercises
+        //Canvas
+        const canvas = document.getElementById("myCanvas");
+        let context = canvas.getContext("2d");
+        context.strokeStyle = "red";
+        context.fillStyle = "rgba(0, 0, 255, 0.5)";
+        context.fillRect(10, 10, 100, 100);   
+        context.strokeRect(10, 10, 100, 100);
+
+        function drawCircle(canvas) {
+    var context = canvas.getContext("2d");
+    context.beginPath();
+    context.arc(100, 100, 50, 0, Math.PI*2, true);
+    context.closePath();
+    context.strokeStyle = "red";
+    context.fillStyle = "blue";
+    context.lineWidth = 3;
+    context.fill(); 
+    context.stroke(); 
+}
+  </script>
+</body>
+</html>
