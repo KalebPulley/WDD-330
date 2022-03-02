@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>team Helper</title>
+</head>
+<body>
+    <button onclick="loadDoc()">this is a test</button>
+    <div id="demo"></div>
+    <script>
+        function test(){
+
+        }
+        function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML = this.responseText;
+    }
+  xhttp.open("GET", "https://swapi.dev/api/people/?page=2", true);
+  xhttp.send();
+}
+    </script>
+    
+</body>
+</html>
