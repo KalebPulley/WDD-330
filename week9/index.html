@@ -1,20 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Week 9 Notes</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Week 9 Notes</h1>
     <div>
-        <h2>Notes</h2>
-        
+      <h2>Notes</h2>
+      <h3>chapter 9 the window</h3>
+      <p>
+        global object act as properties of the window. However it is best not to
+        do that. Window.open() to open a new window. window.moveTo(0,0) to move
+        the window to the top left cornor. write("") to replace the whole
+        document with the text in it. document.coockie to set a coockie key
+        value pair. "const expiryDate = new Date(); const tomorrow =
+        expiryDate.getTime() + 1000 * 60 * 60 * 24;expiryDate.setTime(tomorrow);
+        document.cookie = `name=Batman; expires=${ expiryDate.toUTCString()}`;"
+        domain name=indomainname
+      </p>
+      <h3>chapter 14 html apis</h3>
+      <p>
+        data objects allays stra with data-... access them with dot notation in
+        the dataset for the html node. drop the data- prefix when referencong.
+        get atribute(data-name) is a way to access on older browsers. you can
+        set an object as the value but yuo must convert it from a string.
+      </p>
+      <h4>APIs</h4>
+      <p>
+        use featur detection when using APIs. localStroage is an api tha allows
+        for more storage that dose not expire like cookies. multi threading can
+        be done by using worker threads. "const expiryDate = new Date(); const
+        tomorrow = expiryDate.getTime() + 1000 * 60 * 60 *
+        24;expiryDate.setTime(tomorrow); document.cookie = `name=Batman;
+        expires=${ expiryDate.toUTCString()}`;" .closs() to end the thread.
+        normally you have to be running a server to use multi threading or you
+        can enably it in the browser.
+      </p>
+      <h4>notifications</h4>
+      <p>
+        request permision to show notificatins like the systm does wit
+        "if(window.Notification) { Notification.requestPermission();}" A
+        notification object hase a title, {body: value, icon: reference}
+      </p>
+      <h4>Media</h4>
+      <p>
+        For both audio and vidio tags you can either have controls or not
+        "<audio src="/song.mp3" controls>
+          Your browser does not support the audio element.</audio
+        >" "<video src="http://movie.mp4" controls>
+          Your browser does not support the video element.</video
+        >"" .pause() .play() .muted and .volume can edit effects. .curent time
+        tels wher the video is in playing. .playbackRate can chang how fast it
+        plays. .loop can make it play over and over and over again. .duration to
+        tell how long the viddeo is. Some of these are only availabe after the
+        whole video has loaded so use loadedmetadata event listener to do these
+        things after it has.
+      </p>
+      <h4>Canvas</h4>
+      <canvas id="canvas" width="400" height="400"
+        >Sorry, but your browser does not support the canvas element</canvas
+      >
+      <p>See notes in the script.</p>
+      <h4>shims and polyfills</h4>
+      <p>
+        Because older browsers may not suport all apis it is best to polyfill to
+        allow older browsers to still use the functions till they are updated.
+      </p>
     </div>
     <div>
-        <h2>Practice</h2>
-
+      <h2>Practice</h2>
+      <label
+        ><input type="text" id="name" placeholder="What is your name"
+      /></label>
+      <button onclick="save()">save</button>
+      <button onclick="load()">load</button>
+      <label id="outPut"></label>
     </div>
-</body>
+    <script>
+      function save() {
+        const initialName = document.getElementById("name").value;
+        localStorage.setItem("name", initialName);
+        document.getElementById("name").value = "";
+      }
+      function load() {
+        const saved = localStorage.getItem("name");
+        document.getElementById("outPut").innerHTML = saved;
+      }
+      if (window.Notification) {
+        Notification.requestPermission().then((permission) => {
+          if (Notification.permission === "granted") {
+            new Notification("Hello JavaScript!");
+          }
+        });
+      }
+      const canvasElement = document.getElementById("canvas"); //select the canvas
+      const context = canvasElement.getContext("2d"); //declare context
+      context.fillStyle = "#0000cc"; // a blue fill color
+      context.strokeStyle = "#ccc"; // a gray stroke color
+      context.lineWidth = 4; //this sets the thikness of the stroke.
+      context.fillRect(10, 10, 100, 50); //to draw a rectagale
+      context.strokeRect(10, 100, 100, 50); //to draw only the stroke.
+      //paths make lines here is a T
+      context.beginPath();
+      context.moveTo(130, 50);
+      context.lineTo(180, 50);
+      context.moveTo(155, 50);
+      context.lineTo(155, 90);
+      context.strokeStyle = "#c00";
+      context.lineWidth = 15;
+      context.stroke();
+      //arcs draw curves
+      context.beginPath();
+      context.arc(200, 200, 30, 0, Math.PI * 2, false);
+      context.strokeStyle = "#ff0";
+      context.lineWidth = 4;
+      context.stroke();
+      //fill text writes to the screen
+      context.beginPath();
+      context.arc(200, 200, 30, 0, Math.PI * 2, false);
+      context.strokeStyle = "#ff0";
+      context.lineWidth = 4;
+      context.stroke();
+    </script>
+  </body>
 </html>
