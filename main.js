@@ -54,6 +54,10 @@ const links = [
     {
       label: "Week9 practice",
       url: "week9/websocket.html"
+    },
+    {
+      label: "Week10 Notes",
+      url: "week10/index.html"
     }
   ]
 
