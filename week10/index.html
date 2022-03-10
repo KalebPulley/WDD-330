@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>week 10 Notes</title>
+    <style>
+      body {
+        font: 1em sans-serif;
+        width: 200px;
+        padding: 0;
+        margin: 0 auto;
+      }
+
+      p * {
+        display: block;
+      }
+
+      input[type="email"] {
+        -webkit-appearance: none;
+        appearance: none;
+
+        width: 100%;
+        border: 1px solid #333;
+        margin: 0;
+
+        font-family: inherit;
+        font-size: 90%;
+
+        box-sizing: border-box;
+      }
+
+      /* This is our style for the invalid fields */
+      input:invalid {
+        border-color: #900;
+        background-color: #fdd;
+      }
+
+      input:focus:invalid {
+        outline: none;
+      }
+
+      /* This is the style of our error messages */
+      .error {
+        width: 100%;
+        padding: 0;
+
+        font-size: 80%;
+        color: white;
+        background-color: #900;
+        border-radius: 0 0 5px 5px;
+
+        box-sizing: border-box;
+      }
+
+      .error.active {
+        padding: 0.3em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Week 10 Notes</h1>
+    <div class="notes">
+      <h2>Notes</h2>
+      <h3>Validation</h3>
+      <p>
+        Validation is verifying that the user input is what the program expects
+        and is not malicious. This should be done on the client side for a
+        better user experience and on the server side for security.
+      </p>
+      <p>
+        Built in form validation is very easy but may not work on older browsers
+        and has limits to how error reports fr the user. Useful tage include:
+        requierd, type:(this can specify if it should be a number email address
+        etc.), patturn(place a regulare expression here), min, and max.
+      </p>
+      <p>
+        Java script vaidations requiares more work but gives more options than
+        built in validation. reportValidity() can be helpful when over riding
+        default form submision because it will chech for default validation
+        requarments. seting no validate on a form alows for you to overide the
+        default error message bubbles. The constraint API is not suported on
+        leacy browsers so sometimes you have to completely create your own
+        validation.
+      </p>
+      <h3>fetching</h3>
+      <p>
+        fetch is a HTTP request method that is less error prone than ajax but is
+        only avalable on modern browsers. it is simple when you need to return a
+        file (see practice for syntax.) You can include data about what you are
+        sending in the head and guard that so it is not vueable till it gets to
+        it's destination. the body is where you send data in a requset.
+      </p>
+    </div>
+    <div class="practice">
+      <h2>Practice</h2>
+      <h3>novalidate</h3>
+      <form novalidate>
+        <p>
+          <label for="mail">
+            <span>Please enter an email address:</span>
+            <input type="email" id="mail" name="mail" required minlength="8" />
+            <span class="error" aria-live="polite"></span>
+          </label>
+        </p>
+        <button>Submit</button>
+      </form>
+    </div>
+    <script>
+      /* const email = document.getElementById("mail");
+
+      email.addEventListener("input", function (event) {
+        if (email.validity.typeMismatch) {
+          email.setCustomValidity("I am expecting an e-mail address!");
+          email.reportValidity();
+        } else {
+          email.setCustomValidity("");
+        }
+      });*/
+      // There are many ways to pick a DOM node; here we get the form itself and the email
+      // input box, as well as the span element into which we will place the error message.
+      const form = document.getElementsByTagName("form")[0];
+
+      const email = document.getElementById("mail");
+      const emailError = document.querySelector("#mail + span.error");
+
+      email.addEventListener("input", function (event) {
+        // Each time the user types something, we check if the
+        // form fields are valid.
+
+        if (email.validity.valid) {
+          // In case there is an error message visible, if the field
+          // is valid, we remove the error message.
+          emailError.textContent = ""; // Reset the content of the message
+          emailError.className = "error"; // Reset the visual state of the message
+        } else {
+          // If there is still an error, show the correct error
+          showError();
+        }
+      });
+
+      form.addEventListener("submit", function (event) {
+        // if the email field is valid, we let the form submit
+
+        if (!email.validity.valid) {
+          // If it isn't, we display an appropriate error message
+          showError();
+          // Then we prevent the form from being sent by canceling the event
+          event.preventDefault();
+        }
+      });
+
+      function showError() {
+        if (email.validity.valueMissing) {
+          // If the field is empty,
+          // display the following error message.
+          emailError.textContent = "You need to enter an e-mail address.";
+        } else if (email.validity.typeMismatch) {
+          // If the field doesn't contain an email address,
+          // display the following error message.
+          emailError.textContent =
+            "Entered value needs to be an e-mail address.";
+        } else if (email.validity.tooShort) {
+          // If the data is too short,
+          // display the following error message.
+          emailError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
+        }
+
+        // Set the styling appropriately
+        emailError.className = "error active";
+      }
+
+      //Fetch notes are just for syntax not indtended to work.
+      fetch("http://example.com/movies.json")
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+
+      //All fetch options
+      // Example POST method implementation:
+      async function postData(url = "", data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          mode: "cors", // no-cors, *cors, same-origin
+          cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: "same-origin", // include, *same-origin, omit
+          headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          redirect: "follow", // manual, *follow, error
+          referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+          body: JSON.stringify(data), // body data type must match "Content-Type" header
+        });
+        return response.json(); // parses JSON response into native JavaScript objects
+      }
+
+      postData("https://example.com/answer", { answer: 42 }).then((data) => {
+        console.log(data); // JSON data parsed by `data.json()` call
+      });
+    </script>
+  </body>
+</html>
