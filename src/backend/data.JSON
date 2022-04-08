@@ -1,0 +1,5 @@
+[
+  {"id":1, "date": "12/12/21", "amount": 12, "fund": "home", "comment": "payday" },
+  {"id":2, "date": "12/12/21", "amount": 1200, "fund": "play", "comment": "gift" },
+  {"id":3, "date": "12/12/21", "amount": 1200, "fund": "play", "comment": "gift" }
+]

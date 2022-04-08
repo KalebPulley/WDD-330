@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Budget</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- change the path below to scss/styles.scss to use SASS -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+
+  <body class="flex-column">
+    <header>
+      <h1>Budget</h1>
+      <div class="ballance margin-no row-flex">
+        <h3 class="margin-no">Ballance:</h3>
+        <div id="total" class="area"></div>
+        <h3 class="margin-no">Income:</h3>
+        <div id="income" class="area"></div>
+        <h3 class="margin-no">Spent:</h3>
+        <div id="spent" class="area"></div>
+      </div>
+    </header>
+    <div class="dataSheet" >
+      <ul id="dataSheet">
+        <!--here is where the data will be displayed by the java script-->
+      </ul>
+    </div>
+
+    <div class="aside" id="aside">
+      <!--this is where a list of check box filters will be made by the jave script-->
+    </div>
+    <div class="controls">
+      <div class="flex-column">
+        <label for="amount">
+          <input type="number" id="amount" />amount</label>
+        <label for="fund"><input type="text" id="fund" />fund</label>
+        <label for="comment"><input type="text" id="comment" />comment</label>
+        <label for="date">
+          <input type="number" class="dateInput" id="year" placeholder="Year"/>
+          <input type="number" class="dateInput" id="month" placeholder="Month" />
+          <input type="number" class="dateInput" id="day" placeholder="Day"/>
+        </label>
+        <button id="save">Save</button>
+      </div>
+    </div>
+
+    <script src="js/index.js" type="module"></script>
+  </body>
+</html>

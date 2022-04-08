@@ -58,7 +58,9 @@ const links = [
     {
       label: "Week10 Notes",
       url: "week10/index.html"
-    }
+    },
+    {label: "Budgeting site",
+      url: "src/index.html"}
   ]
 
 function loadIndex(){

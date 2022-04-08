@@ -1,0 +1,61 @@
+@import 'variables';
+
+body {
+  background-color: $body-bg-color;
+}
+.border-so {
+  border: 3px solid $text-color;
+}
+.border-sh {
+  box-shadow: 10px $text-color 10px;
+}
+.row-flex {
+  display: flex;
+  flex-direction: row;
+}
+.margin-no {
+  margin: 0;
+}
+.area {
+  background-color: $brand-primary;
+  min-width: 2em;
+  min-height: 1em;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.aside {
+  position: absolute;
+  right: 5%;
+  top: 12%;
+  height: 5%;
+  overflow: hidden;
+  transform: rotate(-90deg);
+  transition: transform ease-in-out 500ms;
+}
+.aside:hover {
+  height: auto;
+  transform: rotate(0deg);
+}
+.dateInput {
+  width: 5em;
+}
+@media (min-width: 600px){
+  .aside {
+    position: absolute;
+    right: 15%;
+    top: 12%;
+    transform: rotate(0deg);
+  }
+}
+
+@media (min-width: 1000px){
+  .aside {
+    position: absolute;
+    right: 30%;
+    top: 12%;
+    transform: rotate(0deg);
+  }
+}
